@@ -1,0 +1,8 @@
+{
+  "name": "barberia-app-movil",
+  "version": "1.0.0",
+  "description": "Aplicacion movil (interfaz del cliente) - Barberia Reservas",
+  "scripts": {
+    "start": "node servidor.js"
+  }
+}

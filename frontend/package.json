@@ -1,0 +1,8 @@
+{
+  "name": "barberia-frontend-web",
+  "version": "1.0.0",
+  "description": "Frontend web (panel del administrador) - Barberia Reservas",
+  "scripts": {
+    "start": "node servidor.js"
+  }
+}

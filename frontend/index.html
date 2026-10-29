@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbería Reservas — Sistema de reserva de citas</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #1f2a44, #2f4a7a);
+      color: #fff; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 30px 16px; text-align: center;
+    }
+    .logo { font-size: 60px; }
+    h1 { font-size: 34px; margin-top: 12px; }
+    p.sub { color: #b9c6e0; margin-top: 10px; font-size: 16px; max-width: 660px; line-height: 1.6; }
+    .cajas { display: flex; gap: 18px; margin-top: 34px; flex-wrap: wrap; justify-content: center; }
+    .caja {
+      background: #fff; color: #22304a; width: 290px;
+      padding: 26px 22px; border-radius: 14px; text-decoration: none;
+      box-shadow: 0 14px 34px rgba(0,0,0,.3); transition: transform .15s;
+    }
+    .caja:hover { transform: translateY(-5px); }
+    .caja .icono { font-size: 40px; }
+    .caja h2 { font-size: 19px; margin-top: 12px; color: #1f2a44; }
+    .caja p { font-size: 13.5px; color: #66718b; margin-top: 8px; line-height: 1.5; }
+    .caja .puerto { display: inline-block; margin-top: 10px; font-size: 12px; background: #eef2f9; color: #2f4a7a; padding: 3px 9px; border-radius: 20px; font-weight: 700; }
+    .nota { margin-top: 34px; font-size: 13px; color: #96a6c8; line-height: 1.8; }
+    code { background: rgba(255,255,255,.14); padding: 2px 7px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div class="logo">✂️</div>
+  <h1>Barbería Reservas</h1>
+  <p class="sub">
+    Sistema de reserva de citas dividido en tres proyectos independientes que se conectan
+    entre sí por una API REST: frontend web, aplicación móvil y backend con base de datos MongoDB.
+  </p>
+
+  <div class="cajas">
+    <a class="caja" href="/web/">
+      <div class="icono">🖥️</div>
+      <h2>Frontend web</h2>
+      <p>Panel del administrador: servicios, barberos, horarios y gestión de citas.</p>
+      <span class="puerto">puerto 5173</span>
+    </a>
+    <a class="caja" href="http://localhost:5174/">
+      <div class="icono">📱</div>
+      <h2>Aplicación móvil</h2>
+      <p>Interfaz del cliente: consultar servicios, reservar, consultar y cancelar citas.</p>
+      <span class="puerto">puerto 5174</span>
+    </a>
+    <a class="caja" href="http://localhost:4000/api/salud">
+      <div class="icono">⚙️</div>
+      <h2>Backend (API REST)</h2>
+      <p>Node.js + Express: lógica de negocio, validaciones, JWT y acceso a MongoDB.</p>
+      <span class="puerto">puerto 4000</span>
+    </a>
+  </div>
+
+  <p class="nota">
+    Credenciales — Web: <code>admin@barberia.com</code> / <code>admin123</code> ·
+    Móvil: <code>cliente@demo.com</code> / <code>cliente123</code><br/>
+    Base de datos MongoDB: <code>barberia</code>
+  </p>
+</body>
+</html>

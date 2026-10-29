@@ -1,0 +1,15 @@
+{
+  "name": "barberia-reservas",
+  "version": "1.0.0",
+  "description": "Reserva de citas en una barberia - SENA ADSO (frontend web + app movil + backend + MongoDB)",
+  "private": true,
+  "scripts": {
+    "backend": "npm --prefix backend start",
+    "frontend": "npm --prefix frontend start",
+    "movil": "npm --prefix movil start",
+    "seed": "npm --prefix backend run seed",
+    "pruebas": "npm --prefix backend run pruebas",
+    "mongo:consola": "npm --prefix backend run mongo:consola",
+    "mongo:init": "npm --prefix backend run mongo:init"
+  }
+}

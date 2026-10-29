@@ -1,0 +1,19 @@
+{
+  "name": "barberia-backend",
+  "version": "1.0.0",
+  "description": "API REST del sistema de reserva de citas - SENA ADSO",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node src/seed.js",
+    "pruebas": "node scripts/pruebas-api.js",
+    "mongo:consola": "node scripts/consola-mongo.js",
+    "mongo:init": "mongosh mongodb://127.0.0.1:27017/barberia --file ../database/iniciar.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.0"
+  }
+}

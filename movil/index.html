@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Barbería Reservas — App Móvil</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <!-- ============ AUTENTICACIÓN ============ -->
+  <section id="vistaAcceso" class="acceso">
+    <div class="acceso-logo">✂️</div>
+    <h1>Barbería Reservas</h1>
+    <p class="acceso-sub">Reserva tu cita en pocos pasos</p>
+
+    <div class="caja-acceso">
+      <div class="segmento">
+        <button class="seg activo" data-modo="login">Ingresar</button>
+        <button class="seg" data-modo="registro">Crear cuenta</button>
+      </div>
+
+      <div id="camposRegistro" class="oculto">
+        <label>Nombre completo</label>
+        <input type="text" id="regNombre" placeholder="Su nombre" />
+
+        <label>Teléfono</label>
+        <input type="tel" id="regTelefono" placeholder="300 123 4567" />
+      </div>
+
+      <label>Correo electrónico</label>
+      <input type="email" id="accEmail" placeholder="cliente@demo.com" />
+
+      <label>Contraseña</label>
+      <input type="password" id="accPassword" placeholder="••••••••" />
+
+      <button id="btnAcceso" class="btn btn-primario btn-block">Ingresar</button>
+      <p id="accesoError" class="error"></p>
+      <p class="ayuda">Demo: cliente@demo.com / cliente123</p>
+      <a class="enlace" href="http://localhost:5173/web/">Soy administrador →</a>
+    </div>
+  </section>
+
+  <!-- ============ APLICACIÓN ============ -->
+  <section id="vistaApp" class="app oculto">
+    <header class="cabecera">
+      <span class="titulo">✂️ Barbería Reservas</span>
+      <span id="saludo" class="saludo"></span>
+    </header>
+
+    <main class="pantallas">
+
+      <!-- ---------- RESERVAR ---------- -->
+      <div id="pan-reservar" class="pantalla">
+        <h2>Reservar cita</h2>
+
+        <p class="paso">1. Elige el servicio</p>
+        <div id="listaServicios" class="tarjetas"></div>
+
+        <p class="paso">2. Elige el barbero</p>
+        <div id="listaBarberos" class="tarjetas"></div>
+
+        <p class="paso">3. Elige la fecha</p>
+        <input type="date" id="fechaReserva" class="entrada-ancha" />
+
+        <button id="btnBuscarHoras" class="btn btn-secundario btn-block">Buscar horas disponibles</button>
+
+        <div id="bloqueHoras" class="oculto">
+          <p class="paso">4. Elige la hora</p>
+          <div id="listaHoras" class="horas"></div>
+          <p id="infoDisponibilidad" class="info"></p>
+        </div>
+
+        <button id="btnConfirmar" class="btn btn-primario btn-block oculto">Confirmar reserva</button>
+      </div>
+
+      <!-- ---------- MIS CITAS ---------- -->
+      <div id="pan-citas" class="pantalla oculto">
+        <h2>Mis citas</h2>
+        <div id="listaCitas" class="tarjetas"></div>
+        <p id="citasVacio" class="vacio oculto">Aún no tienes citas reservadas.</p>
+      </div>
+
+      <!-- ---------- PERFIL ---------- -->
+      <div id="pan-perfil" class="pantalla oculto">
+        <h2>Mi perfil</h2>
+        <div class="caja-perfil">
+          <p><strong>Nombre:</strong> <span id="perfilNombre"></span></p>
+          <p><strong>Correo:</strong> <span id="perfilEmail"></span></p>
+          <p><strong>Teléfono:</strong> <span id="perfilTelefono"></span></p>
+          <p><strong>Rol:</strong> Cliente</p>
+        </div>
+        <button id="btnCerrarSesion" class="btn btn-peligro btn-block">Cerrar sesión</button>
+      </div>
+
+    </main>
+
+    <nav class="navegacion">
+      <button class="nav activo" data-pantalla="reservar">📅<span>Reservar</span></button>
+      <button class="nav" data-pantalla="citas">✅<span>Mis citas</span></button>
+      <button class="nav" data-pantalla="perfil">👤<span>Perfil</span></button>
+    </nav>
+  </section>
+
+  <div id="toastMovil" class="toast oculto"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

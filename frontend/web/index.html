@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbería Reservas — Panel Web</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <!-- ============ LOGIN ============ -->
+  <section id="vistaLogin" class="login-contenedor">
+    <div class="login-tarjeta">
+      <div class="logo">✂️</div>
+      <h1>Barbería Reservas</h1>
+      <p class="subtitulo">Panel de administración</p>
+
+      <label>Correo electrónico</label>
+      <input type="email" id="loginEmail" placeholder="admin@barberia.com" />
+
+      <label>Contraseña</label>
+      <input type="password" id="loginPassword" placeholder="••••••••" />
+
+      <button id="btnLogin" class="btn btn-primario btn-block">Ingresar</button>
+      <p class="ayuda">Demo: admin@barberia.com / admin123</p>
+      <p id="loginError" class="error"></p>
+      <a class="enlace" href="http://localhost:5174/">Ver aplicación móvil →</a>
+    </div>
+  </section>
+
+  <!-- ============ APLICACIÓN ============ -->
+  <section id="vistaApp" class="oculto">
+    <header class="barra-superior">
+      <div class="marca">✂️ Barbería Reservas <span>Panel web</span></div>
+      <nav class="menu">
+        <button class="tab activo" data-tab="citas">Citas</button>
+        <button class="tab" data-tab="servicios">Servicios</button>
+        <button class="tab" data-tab="barberos">Barberos</button>
+        <button class="tab" data-tab="horarios">Horarios</button>
+      </nav>
+      <div class="usuario">
+        <span id="usuarioNombre"></span>
+        <button id="btnSalir" class="btn btn-secundario">Salir</button>
+      </div>
+    </header>
+
+    <main class="contenido">
+
+      <!-- ---------- CITAS ---------- -->
+      <section id="tab-citas" class="panel">
+        <div class="encabezado-panel">
+          <h2>Gestión de citas</h2>
+          <div class="filtros">
+            <input type="date" id="filtroFecha" />
+            <select id="filtroEstado">
+              <option value="">Todos los estados</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="confirmada">Confirmada</option>
+              <option value="completada">Completada</option>
+              <option value="cancelada">Cancelada</option>
+            </select>
+            <button id="btnFiltrar" class="btn btn-secundario">Filtrar</button>
+            <button id="btnNuevaCita" class="btn btn-primario">+ Nueva cita</button>
+          </div>
+        </div>
+
+        <!-- Formulario para agendar manualmente -->
+        <form id="formCita" class="formulario fila oculto">
+          <select id="citaCliente" required><option value="">Cliente</option></select>
+          <select id="citaBarbero" required><option value="">Barbero</option></select>
+          <select id="citaServicio" required><option value="">Servicio</option></select>
+          <input type="date" id="citaFecha" required />
+          <input type="time" id="citaHora" required step="1800" />
+          <button type="submit" class="btn btn-primario">Reservar</button>
+          <button type="button" id="btnCancelarForm" class="btn btn-secundario">Cerrar</button>
+        </form>
+
+        <div class="tabla-contenedor">
+          <table id="tablaCitas">
+            <thead>
+              <tr>
+                <th>Fecha</th><th>Hora</th><th>Cliente</th><th>Barbero</th>
+                <th>Servicio</th><th>Valor</th><th>Estado</th><th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p id="citasVacio" class="vacio oculto">No hay citas registradas con esos filtros.</p>
+      </section>
+
+      <!-- ---------- SERVICIOS ---------- -->
+      <section id="tab-servicios" class="panel oculto">
+        <div class="encabezado-panel"><h2>Servicios</h2></div>
+        <form id="formServicio" class="formulario fila">
+          <input type="hidden" id="servicioId" />
+          <input type="text" id="servicioNombre" placeholder="Nombre del servicio" required />
+          <input type="text" id="servicioDescripcion" placeholder="Descripción" />
+          <input type="number" id="servicioPrecio" placeholder="Precio ($)" min="0" required />
+          <input type="number" id="servicioDuracion" placeholder="Duración (min)" min="10" required />
+          <button type="submit" class="btn btn-primario">Guardar</button>
+          <button type="button" id="btnLimpiarServicio" class="btn btn-secundario oculto">Cancelar</button>
+        </form>
+        <div class="tabla-contenedor">
+          <table id="tablaServicios">
+            <thead>
+              <tr><th>Nombre</th><th>Descripción</th><th>Precio</th><th>Duración</th><th>Estado</th><th>Acciones</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ---------- BARBEROS ---------- -->
+      <section id="tab-barberos" class="panel oculto">
+        <div class="encabezado-panel"><h2>Barberos</h2></div>
+        <form id="formBarbero" class="formulario fila">
+          <input type="hidden" id="barberoId" />
+          <input type="text" id="barberoNombre" placeholder="Nombre completo" required />
+          <input type="text" id="barberoTelefono" placeholder="Teléfono" />
+          <input type="text" id="barberoEspecialidad" placeholder="Especialidad" />
+          <button type="submit" class="btn btn-primario">Guardar</button>
+          <button type="button" id="btnLimpiarBarbero" class="btn btn-secundario oculto">Cancelar</button>
+        </form>
+        <div class="tabla-contenedor">
+          <table id="tablaBarberos">
+            <thead>
+              <tr><th>Nombre</th><th>Teléfono</th><th>Especialidad</th><th>Estado</th><th>Acciones</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ---------- HORARIOS ---------- -->
+      <section id="tab-horarios" class="panel oculto">
+        <div class="encabezado-panel">
+          <h2>Horarios disponibles</h2>
+          <div class="filtros">
+            <select id="horarioBarbero"><option value="">Seleccione un barbero</option></select>
+          </div>
+        </div>
+        <form id="formHorario" class="formulario fila">
+          <select id="horarioBarberoForm" required><option value="">Barbero</option></select>
+          <select id="horarioDia" required>
+            <option value="">Día</option>
+            <option value="1">Lunes</option><option value="2">Martes</option>
+            <option value="3">Miércoles</option><option value="4">Jueves</option>
+            <option value="5">Viernes</option><option value="6">Sábado</option>
+            <option value="0">Domingo</option>
+          </select>
+          <input type="time" id="horarioInicio" required />
+          <input type="time" id="horarioFin" required />
+          <button type="submit" class="btn btn-primario">Agregar bloque</button>
+        </form>
+        <div class="tabla-contenedor">
+          <table id="tablaHorarios">
+            <thead><tr><th>Día</th><th>Desde</th><th>Hasta</th><th>Acciones</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="ayuda">La app móvil solo mostrará las horas que estén dentro de estos bloques y que no estén ocupadas.</p>
+      </section>
+
+    </main>
+  </section>
+
+  <div id="toast" class="toast oculto"></div>
+
+  <script src="../config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
